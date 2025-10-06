@@ -11,7 +11,7 @@ help: ## Show this help message
 	@awk 'BEGIN {FS = ":.*?## "} /^[a-zA-Z_-]+:.*?## / {printf "  %-15s %s\n", $$1, $$2}' $(MAKEFILE_LIST)
 
 .PHONY: test
-test: ## Run tests
+test: lint ## Run tests and linters
 	$(PYTHON) -m pytest tests/ -v --cov=src/uplang --cov-report=term-missing
 
 .PHONY: lint
